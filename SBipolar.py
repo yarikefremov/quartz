@@ -1,17 +1,13 @@
-from bipolar import *
+from Bipolar import *
 from sympy import symbols, oo  # бесконечность
 
 
 # Двухполюсник в схеме замещения
-class SBipolar:
+class SBipolar(Bipolar):
     s = symbols("s")
 
     def __init__(self, src: Bipolar):
-        self.b_id: int = src.b_id
-        self.init_node: int = src.init_node
-        self.end_node: int = src.end_node
-        self.b_type: str = src.b_type
-        self.value: int = src.value
+        super().__init__(src.b_id, src.init_node, src.end_node, src.b_type, src.value)
         self.z = self.get_z()  # комплексное сопротивление
         self.source_value = self.get_source_value()  # напряжение или ток источника
 
